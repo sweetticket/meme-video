@@ -34,9 +34,22 @@
     $topText.textContent = text
   }
 
+  /**
+   * Toggles mute video
+   */
+  var toggleMute = function(event) {
+    var isMuted = event.currentTarget.checked
+    if (isMuted) {
+      window.YTPlayer.player.mute()
+    } else {
+      window.YTPlayer.player.unMute()
+    }
+  }
+
   document.getElementById("top").addEventListener('keyup', handleCaptionKeyUp)
   document.getElementById("bottom").addEventListener('keyup', handleCaptionKeyUp)
   document.getElementById("url").addEventListener('keyup', handleUrlKeyUp)
+  document.getElementById("mute").addEventListener('change', toggleMute)
 
   window.Editor = {
   }

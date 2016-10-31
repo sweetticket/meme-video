@@ -26,14 +26,14 @@
         'onStateChange': onPlayerStateChange
       }
     })
-
-    // player.seekTo(window.YTPlayer.starttime)
     window.YTPlayer.player = player
   }
 
   // The API will call this function when the video player is ready.
   var onPlayerReady = function(event) {
     event.target.playVideo()
+    event.target.mute()
+    event.target.seekTo(window.YTPlayer.starttime)
   }
 
   // The API calls this function when the player's state changes.
@@ -48,7 +48,9 @@
 
   var replayVideo = function() {
     window.YTPlayer.done = false
-    window.YTPlayer.player.seekTo(window.YTPlayer.starttime)
+    if (window.YTPlayer.player) {
+      window.YTPlayer.player.seekTo(window.YTPlayer.starttime)
+    }
   }
 
   // update video with new video id
